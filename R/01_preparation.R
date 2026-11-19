@@ -37,12 +37,12 @@ escapad <- bdd %>%
     # --- Consommation d'alcool ------------------------------------------------
     alcool_annee = factor(
       case_when(
-        Q34 == 1 ~ "Aucune",
+        Q34 == 1 ~ "Pas d'alcool",
         Q34 %in% 2:3 ~ "1 fois/mois au plus",
         Q34 %in% 4:5 ~ "2/mois à 1/semaine",
         Q34 %in% 6:8 ~ "2/semaine ou plus"
       ),
-      levels = c("Aucune", "1 fois/mois au plus", "2/mois à 1/semaine",
+      levels = c("Pas d'alcool", "1 fois/mois au plus", "2/mois à 1/semaine",
                  "2/semaine ou plus")
     ),
     alcool_regulier = factor(

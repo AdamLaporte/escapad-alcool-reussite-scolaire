@@ -30,8 +30,16 @@ ggsave("figures/acm_eboulis.png",
          labs(title = "ACM : part d'inertie expliquée par axe"),
        width = 7, height = 4, dpi = 150)
 
-ggsave("figures/acm_modalites.png",
-       fviz_mca_var(acm, repel = TRUE, col.var = "#3B6EA5",
-                    col.quali.sup = "#C0392B", labelsize = 3) +
-         labs(title = "ACM : modalités actives (bleu) et supplémentaires (rouge)"),
-       width = 10, height = 8, dpi = 150)
+# Plan des modalités actives : structure des consommations
+ggsave("figures/acm_modalites_actives.png",
+       fviz_mca_var(acm, repel = TRUE, invisible = "quali.sup",
+                    col.var = "#3B6EA5", labelsize = 3.5) +
+         labs(title = "ACM : modalités de consommation (variables actives)"),
+       width = 9, height = 7, dpi = 150)
+
+# Variables supplémentaires : proches du centre, elles ont leur propre graphique
+ggsave("figures/acm_variables_supplementaires.png",
+       fviz_mca_var(acm, repel = TRUE, invisible = "var",
+                    col.quali.sup = "#C0392B", labelsize = 3.5) +
+         labs(title = "ACM : profils scolaires et sociaux (variables supplémentaires)"),
+       width = 9, height = 7, dpi = 150)

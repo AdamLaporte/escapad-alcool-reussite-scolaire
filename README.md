@@ -55,6 +55,79 @@ ACM sur les consommations (alcool, API, ivresse, tabac, cannabis), avec FactoMin
 sexe et le milieu social sont projetés en **variables supplémentaires**, pour situer les profils scolaires dans
 l'espace des comportements de consommation sans qu'ils influencent les axes.
 
+## Résultats
+
+### En bref
+
+- **Le lien brut entre alcool et redoublement est en U.** Les non-buveurs (19,7 %) et les jeunes qui boivent au
+  moins deux fois par semaine (20,2 %) redoublent plus souvent que les buveurs modérés (14,4 %).
+- **Ce lien vient surtout du milieu social.** L'abstinence est bien plus fréquente dans les ménages inactifs
+  (54 %) que chez les cadres (15 %), et ces mêmes ménages concentrent le redoublement (30 % contre 8 %).
+- **Une fois le milieu social, le tabac et le cannabis pris en compte, la fréquence de consommation n'est plus
+  associée à davantage de redoublement.** C'est l'**alcoolisation ponctuelle importante répétée** (3 API ou plus
+  dans le mois) qui reste associée à un risque plus élevé (OR = 1,22, IC 95 % [1,05 ; 1,41]).
+- **Les liaisons sont faibles.** Tous les V de Cramér entre alcool et indicateurs scolaires sont inférieurs à
+  0,06 : avec 22 000 répondants, elles sont significatives, mais l'alcool explique peu des parcours scolaires.
+
+### Descriptif
+
+![Taux de redoublement selon la consommation d'alcool](figures/taux_redoublement.png)
+
+La forme en U se retrouve avec les API : 16,7 % de redoublement sans API, 15,0 % avec 1 à 2 API et 19,9 % au-delà.
+Le sentiment d'échec scolaire, lui, augmente doucement avec la consommation : de 20,0 % chez les jeunes jamais
+ivres à 23,9 % chez ceux qui l'ont déjà été.
+
+La consommation dépend surtout de la **situation scolaire**. C'est avec cette variable que les liaisons sont les
+plus fortes (V de Cramér ≈ 0,10) : 21 % des apprentis boivent au moins deux fois par semaine, contre 5 % des
+lycéens en filière générale ou technologique.
+
+![Fréquence de consommation selon la situation scolaire](figures/alcool_selon_situation_scolaire.png)
+
+### Régressions logistiques
+
+![Odds ratios bruts et ajustés](figures/odds_ratios.png)
+
+| Redoublement : odds ratio (réf. pas d'alcool) | Brut | Ajusté |
+|-----------------------------------------------|-----:|-------:|
+| Alcool au plus 1 fois par mois | 0,80 | 0,90 |
+| De 2 fois par mois à 1 fois par semaine | 0,71 | 0,73 |
+| 2 fois par semaine ou plus | 1,05 (n.s.) | 0,75 |
+| 3 API ou plus dans le mois (réf. aucune) | | 1,22 |
+
+- **Le surcroît de redoublement chez les gros buveurs disparaît dans le modèle ajusté**, et passe même sous le
+  niveau des non-buveurs. Il tenait à des facteurs associés : le milieu social, et surtout le **tabac quotidien**
+  (OR = 2,19), qui est le marqueur de comportement le plus fortement lié au redoublement.
+- **Le milieu social domine.** À sexe et consommations égaux, un jeune d'un ménage ouvrier a un risque de
+  redoublement presque 3 fois plus élevé (en odds) qu'un enfant de cadres. Ce rapport dépasse 4 pour les ménages
+  inactifs.
+- **Pour le sentiment d'échec**, la fréquence d'alcool ne joue plus une fois le modèle ajusté. Les facteurs
+  associés sont le sexe (OR = 1,93 pour les filles) et l'usage régulier de cannabis (OR = 1,73).
+- Le modèle ajusté est nettement meilleur que le modèle brut (test du rapport de vraisemblance, p < 0,001 ; AIC
+  qui passe de 18 389 à 17 580 pour le redoublement, sur 20 811 répondants sans valeur manquante).
+
+### Analyse des correspondances multiples
+
+| Modalités de consommation | Profils scolaires et sociaux |
+|:-------------------------:|:----------------------------:|
+| ![ACM, variables actives](figures/acm_modalites_actives.png) | ![ACM, variables supplémentaires](figures/acm_variables_supplementaires.png) |
+
+- **Axe 1 (30 % de l'inertie) : l'intensité des consommations.** Il oppose l'abstinence (pas d'alcool, jamais
+  ivre, non-fumeur, pas de cannabis) à la consommation.
+- **Axe 2 (14 %) : occasionnel ou intensif.** Il sépare l'usage occasionnel (1 à 2 API, fumeur occasionnel) de
+  l'usage intensif (alcool 2 fois par semaine ou plus, 3 API ou plus, tabac quotidien, cannabis régulier). Les
+  différents produits se consomment donc ensemble : c'est un profil de polyconsommation plus qu'un usage isolé
+  d'alcool.
+- **Les profils scolaires se projettent près du centre**, signe d'un lien faible avec les consommations. Seuls
+  l'apprentissage et la sortie du système scolaire se placent nettement du côté des usages intensifs. Les
+  ménages inactifs et monoactifs se placent du côté de l'abstinence.
+
+### Conclusion
+
+À 17 ans, boire de l'alcool, même souvent, n'est pas en soi associé à un parcours scolaire plus difficile une
+fois le milieu social pris en compte. Les signaux qui restent sont les **alcoolisations ponctuelles importantes
+répétées** et la **polyconsommation** (tabac quotidien, cannabis). Le redoublement reste avant tout marqué par
+l'**origine sociale**.
+
 ## Utilisation
 
 ```bash
@@ -83,6 +156,9 @@ Le script produit :
 - **Données déclaratives.** Les consommations sont autodéclarées, avec un risque de sous-déclaration.
 - **Mesure partielle de la réussite.** Redoublement, sentiment d'échec et filière n'en saisissent qu'une partie :
   l'enquête ne contient pas les résultats scolaires.
+- **Consommations corrélées entre elles.** Alcool, tabac et cannabis vont souvent ensemble (voir l'ACM). Dans le
+  modèle ajusté, leurs effets propres sont donc estimés avec prudence : par exemple, l'odds ratio inférieur à 1 du
+  cannabis régulier sur le redoublement ne s'interprète que tabac et alcool fixés.
 - **Pas de pondération.** La base fournie ne contient pas de poids de redressement. Les résultats portent sur
   l'échantillon.
 

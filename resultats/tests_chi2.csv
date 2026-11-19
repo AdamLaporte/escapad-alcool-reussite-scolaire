@@ -1,0 +1,13 @@
+"variable_alcool","variable_scolaire","n","chi2","ddl","p_valeur","v_cramer"
+"alcool_annee","redoublement",22057,78.4,3,6.68e-17,0.06
+"alcool_regulier","redoublement",22029,0.7,1,0.417,0.005
+"api_mois","redoublement",21957,32.3,2,9.81e-08,0.038
+"ivresse_vie","redoublement",22067,2,1,0.154,0.01
+"alcool_annee","sentiment_echec",21772,12.1,3,0.00706,0.024
+"alcool_regulier","sentiment_echec",21745,1.5,1,0.219,0.008
+"api_mois","sentiment_echec",21684,27.8,2,9.09e-07,0.036
+"ivresse_vie","sentiment_echec",21785,47.9,1,4.51e-12,0.047
+"alcool_annee","situation_scolaire",21682,609.1,9,2.31e-125,0.097
+"alcool_regulier","situation_scolaire",21654,261.4,3,2.24e-56,0.11
+"api_mois","situation_scolaire",21585,394.6,6,4.14e-82,0.096
+"ivresse_vie","situation_scolaire",21694,116,3,5.59e-25,0.073

@@ -54,7 +54,8 @@ write.csv(resultats_or, "resultats/odds_ratios.csv", row.names = FALSE)
 graph_or <- resultats_or %>%
   filter(grepl("^(alcool_annee|api_mois)", terme)) %>%
   mutate(terme = sub("^(alcool_annee|api_mois)", "", terme),
-         terme = factor(terme, levels = rev(unique(terme)))) %>%
+         terme = factor(terme, levels = rev(unique(terme))),
+         modele = factor(modele, levels = c("brut", "ajusté"))) %>%
   ggplot(aes(x = odds_ratio, y = terme, colour = modele)) +
   geom_vline(xintercept = 1, linetype = "dashed", colour = "grey50") +
   geom_pointrange(aes(xmin = ic95_bas, xmax = ic95_haut),
