@@ -1,0 +1,8 @@
+# Données sous convention OFDT : ne jamais les versionner
+data/*
+!data/README.md
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
